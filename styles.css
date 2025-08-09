@@ -118,12 +118,28 @@ header p{margin:.25rem auto var(--space-3);max-width:60ch;}
 #about h3{font-family:var(--font-display);font-size:1.8rem;color:var(--purple);text-align:center;margin-bottom:var(--space-3);}
 #about > div{display:grid;grid-template-columns:1fr;gap:.75rem;}
 #about > div > section{background:var(--white);border:1px solid var(--light);border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow);}
+/* Small centered icons for the fact tiles */
+#about img{
+  width:80px;
+  height:80px;
+  display:block;
+  margin:0 auto .5rem;
+  object-fit:contain;
+  filter: drop-shadow(.15rem .25rem .25rem rgba(0,0,0,.25));
+}
 #about h4{margin:0 0 .25rem;font-weight:700;}
 #about p{margin:0;font-weight:600;}
 
 /* Contact */
 #contact{margin:var(--space-5) auto var(--space-5);}
 #contact h3{font-family:var(--font-display);font-size:1.8rem;color:var(--blue);text-align:center;margin-bottom:var(--space-3);}
+
+.form-required{
+  font-size:.9rem;
+  color:var(--purple);
+  font-weight:700;
+  margin-left:.5rem;
+}
 #contact form{background:var(--light);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);display:grid;gap:.75rem;}
 label{font-weight:700;text-transform:uppercase;letter-spacing:.3px;font-size:.9rem;}
 label span{color:var(--purple);margin-left:.25rem;}
@@ -166,20 +182,12 @@ footer a:hover{text-decoration:underline;}
   #about > div{grid-template-columns:repeat(4, 1fr);}
 }
 
-/* Make the Plan Your Trip SVG icons visible and consistent */
-#plan svg{
+#plan img{
   display:block;
   width:150px;
   height:150px;
   margin:.5rem auto 0;
-  fill:none;
-  stroke:#00bfd8;       /* same brand teal you used inline */
-  stroke-width:1.5;     /* a bit thicker so it shows clearly */
-}
-#plan svg path,
-#plan svg line,
-#plan svg circle {
-  stroke:#00bfd8;
+  object-fit:contain;   /* keep the SVG proportions */
 }
 
 
