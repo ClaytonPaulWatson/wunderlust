@@ -241,3 +241,52 @@ header{
   stroke: var(--blue);
 }
 
+/* === PATCH v2: mockup polish (header gradient + yellow band + blue icons) === */
+
+/* Stronger header gradient + bigger title */
+header{
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    rgba(73,155,210,.18) 35%,
+    rgba(73,155,210,.28) 100%
+  );
+}
+@media (min-width:650px){ header h1{ font-size: 2.8rem; } }
+@media (min-width:980px){ header h1{ font-size: 3.2rem; } }
+
+/* Yellow band behind the Plan section like the mockup */
+#plan{
+  background: var(--yellow);
+  padding: 1rem 1rem 1.5rem;
+  border-radius: var(--radius);
+}
+#plan > div{ margin-top: .5rem; }
+#plan > div > section{
+  background: var(--white);
+}
+
+/* Blue bar titles on each Plan tile */
+#plan h4{
+  background: var(--blue);
+  color: var(--white);
+}
+
+/* Plan icons are external SVGs in <img>, so style the <img> directly */
+#plan img{
+  display:block;
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  margin:.5rem auto 0;
+  /* tint to brand blue — works well for monochrome SVGs */
+  filter: invert(41%) sepia(27%) saturate(1400%) hue-rotate(178deg) brightness(90%) contrast(90%);
+}
+
+/*  */
+.form-required{
+  font-size:.9rem;
+  color:var(--purple);
+  font-weight:700;
+  margin-left:.5rem;
+}
