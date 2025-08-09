@@ -279,9 +279,8 @@ header{
   height:150px;
   object-fit:contain;
   margin:.5rem auto 0;
-  /* tint to brand blue — works well for monochrome SVGs */
-  filter: invert(41%) sepia(27%) saturate(1400%) hue-rotate(178deg) brightness(90%) contrast(90%);
 }
+
 
 /*  */
 .form-required{
