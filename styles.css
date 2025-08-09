@@ -190,4 +190,54 @@ footer a:hover{text-decoration:underline;}
   object-fit:contain;   /* keep the SVG proportions */
 }
 
+/* ===== Mockup polish: header gradient + bigger title ===== */
+header{
+  /* soft white → brand-blue fade */
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    rgba(73,155,210,.10) 45%,
+    rgba(73,155,210,.18) 100%
+  );
+}
+@media (min-width:650px){
+  header h1{ font-size: 2.8rem; }   /* larger on tablet */
+}
+@media (min-width:980px){
+  header h1{ font-size: 3.2rem; }   /* even larger on desktop */
+}
+
+/* ===== Mockup polish: yellow band behind Plan tiles, blue headers/icons ===== */
+#plan{
+  background: var(--yellow);
+  padding: 1rem 1rem 1.5rem;   /* space around the tiles like the mock */
+  border-radius: var(--radius);
+}
+#plan > h3{
+  margin-top: 0;               /* keep heading snug to yellow band */
+}
+#plan > div{
+  margin-top: .5rem;
+}
+#plan > div > section{
+  background: var(--white);    /* white tiles on the yellow band */
+}
+#plan h4{
+  background: var(--blue);     /* blue bar at top of each tile */
+  color: var(--white);
+}
+#plan svg{
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: .5rem auto 0;
+  fill: none;
+  stroke: var(--blue);         /* blue line icons (not gray) */
+  stroke-width: 1.5;
+}
+#plan svg path,
+#plan svg line,
+#plan svg circle{
+  stroke: var(--blue);
+}
 
