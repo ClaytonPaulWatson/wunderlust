@@ -289,3 +289,72 @@ header{
   font-weight:700;
   margin-left:.5rem;
 }
+/* === ICONS VIA CSS (no HTML changes) === */
+
+/* PLAN YOUR TRIP — use the <a> as the icon box, hide the inner <img> */
+#plan > div > section a img { display: none; }
+
+#plan > div > section a{
+  display:block;
+  width:150px; height:150px;
+  margin:.5rem auto 0;
+  background-color: var(--blue);                 /* icon color */
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+
+/* Map each tile to its SVG (keeps your HTML untouched) */
+#plan > div > section:nth-child(1) a{
+  -webkit-mask-image: url("images/get.svg"); mask-image: url("images/get.svg");
+}
+#plan > div > section:nth-child(2) a{
+  -webkit-mask-image: url("images/stay.svg"); mask-image: url("images/stay.svg");
+}
+#plan > div > section:nth-child(3) a{
+  -webkit-mask-image: url("images/do.svg"); mask-image: url("images/do.svg");
+}
+#plan > div > section:nth-child(4) a{
+  -webkit-mask-image: url("images/eat.svg"); mask-image: url("images/eat.svg");
+}
+
+/* ABOUT YOUR DESTINATION — hide the <img>, draw icon with ::before */
+#about > div > section img{ display:none; }
+
+#about > div > section::before{
+  content:"";
+  display:block;
+  width:80px; height:80px;
+  margin:0 auto .5rem;
+  background-color: var(--blue);                 /* icon color */
+  -webkit-mask-position:center; mask-position:center;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-size:contain; mask-size:contain;
+}
+
+/* Map each fact tile to its SVG */
+#about > div > section:nth-child(1)::before{
+  -webkit-mask-image: url("images/size.svg"); mask-image: url("images/size.svg");
+}
+#about > div > section:nth-child(2)::before{
+  -webkit-mask-image: url("images/elevation.svg"); mask-image: url("images/elevation.svg");
+}
+#about > div > section:nth-child(3)::before{
+  -webkit-mask-image: url("images/location.svg"); mask-image: url("images/location.svg");
+}
+#about > div > section:nth-child(4)::before{
+  -webkit-mask-image: url("images/population.svg"); mask-image: url("images/population.svg");
+}
+
+/* Fallback for older browsers (shows the actual SVG if mask not supported) */
+@supports not (-webkit-mask-image: url("")) {
+  #plan > div > section a{
+    background: none;
+  }
+  #plan > div > section a img{
+    display:block; width:150px; height:150px; object-fit:contain; margin:.5rem auto 0;
+  }
+  #about > div > section img{
+    display:block; width:80px; height:80px; object-fit:contain; margin:0 auto .5rem;
+  }
+}
