@@ -54,6 +54,18 @@ main{width:min(1100px, 100% - 2rem);margin-inline:auto;}
 #skip{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;}
 #skip:focus{position:static;width:auto;height:auto;}
 
+/* HTML uses id="skip" */
+#skip{
+  position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+#skip:focus{ position:static; width:auto; height:auto; }
+
+/* Hide the visible nav heading, keep it for screen readers */
+nav h2{
+  position:absolute;
+  left:-9999px;
+}
+
 /* Visually hidden but screen-reader accessible */
 .sr-only{
   position:absolute !important;
@@ -64,7 +76,6 @@ main{width:min(1100px, 100% - 2rem);margin-inline:auto;}
   white-space:nowrap; border:0;
 }
 
-.skip-link:focus{ position:static; width:auto; height:auto; }
 
 
 /* Header / Nav */
@@ -154,3 +165,21 @@ footer a:hover{text-decoration:underline;}
   #testimonials > div{grid-template-columns:repeat(3, 1fr);}
   #about > div{grid-template-columns:repeat(4, 1fr);}
 }
+
+/* Make the Plan Your Trip SVG icons visible and consistent */
+#plan svg{
+  display:block;
+  width:150px;
+  height:150px;
+  margin:.5rem auto 0;
+  fill:none;
+  stroke:#00bfd8;       /* same brand teal you used inline */
+  stroke-width:1.5;     /* a bit thicker so it shows clearly */
+}
+#plan svg path,
+#plan svg line,
+#plan svg circle {
+  stroke:#00bfd8;
+}
+
+
