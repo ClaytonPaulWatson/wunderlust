@@ -47,13 +47,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/* =========================================================
-   Wunderlust Majorca — Clay Watson
-   ========================================================= */
+/* === Brand fonts === */
+@import url('https://fonts.googleapis.com/css2?family=Molle:ital@1&family=Montserrat:wght@400;600;700&display=swap');
 
-/* ---------- Brand tokens ---------- */
+/* === Brand tokens === */
 :root{
-  /* Colors */
   --yellow:#F6D64A;
   --teal:#55BCD5;
   --purple:#9B26B0;
@@ -63,20 +61,17 @@ table {
   --white:#FFFFFF;
   --black:#000000;
 
-  /* Fonts */
   --font-display:"Molle", cursive;
   --font-sans:"Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-  /* Spacing & misc */
   --space-1:.25rem; --space-2:.5rem; --space-3:1rem; --space-4:1.5rem; --space-5:2rem;
   --radius:.5rem;
   --shadow: -0.5rem 0.5rem 1rem rgba(0,0,0,.25);
 }
 
-/* ---------- Base / A11y ---------- */
+/* === Base / a11y (mobile-first) === */
 html{ box-sizing:border-box; }
 *,*::before,*::after{ box-sizing:inherit; }
-
 body{
   margin:0;
   color:var(--dark);
@@ -84,29 +79,23 @@ body{
   font-family:var(--font-sans);
   line-height:1.45;
 }
-
-#skip{
+.skip-link{
   position:absolute; left:-10000px; top:auto; width:1px; height:1px; overflow:hidden;
 }
-#skip:focus{ position:static; width:auto; height:auto; }
-
+.skip-link:focus{ position:static; width:auto; height:auto; }
 img{ display:block; max-width:100%; height:auto; }
 a{ color:var(--blue); text-decoration:none; }
 a:hover{ text-decoration:underline; }
 :focus-visible{ outline:3px solid var(--purple); outline-offset:2px; }
-
 main{ width:min(1100px, 100% - 2rem); margin-inline:auto; }
 
-/* ---------- Header / Branding ---------- */
+/* === Header / Nav === */
 header{
   padding: var(--space-3) 1rem;
   text-align:center;
-  background: var(--white);
 }
-#logo img{
-  width:140px;
-  height:auto;
-  margin:0 auto .5rem;
+header > img{
+  width:140px; height:auto; margin:0 auto .5rem;
 }
 header h1{
   font-family:var(--font-display);
@@ -114,271 +103,117 @@ header h1{
   font-size:2rem;
   margin:.25rem 0 0;
 }
-header p{
-  margin:.25rem auto var(--space-3);
-  max-width:60ch;
-}
+header p{ margin:.25rem auto var(--space-3); max-width:60ch; }
 
-/* ---------- Nav (mobile toggle) ---------- */
-nav{ width:min(700px, 100%); margin:0 auto; }
-#menu-toggle input{ position:absolute; left:-9999px; }
-#menu-toggle label{
-  display:inline-block;
-  padding:.65rem 1rem;
-  background:var(--yellow);
-  color:var(--dark);
-  border-radius:var(--radius);
-  font-weight:700;
-  cursor:pointer;
-}
-#menu-toggle ul{
-  list-style:none;
-  padding:0;
-  margin:.75rem 0 0;
-  display:none;
-}
-#menu-toggle input:checked ~ ul{ display:grid; gap:.5rem; }
-#menu-toggle li a{
-  display:block;
-  text-align:center;
+/* Mobile nav: stacked buttons */
+header nav ul{ width:min(700px,100%); margin:0 auto; display:grid; gap:.5rem; }
+header nav a{
+  display:block; text-align:center;
   padding:.8rem 1rem;
   background:var(--teal);
   color:var(--black);
   border-radius:var(--radius);
   font-weight:600;
-  box-shadow: var(--shadow);
-}
-#menu-toggle li.active a{
-  background:var(--purple);
-  color:var(--white);
+  box-shadow:var(--shadow);
 }
 
-/* ---------- Intro / Hero ---------- */
-#intro{
-  width:min(1100px, 100% - 2rem);
-  margin:1.25rem auto;
-}
-#intro h2{
+/* === Hero / Intro === */
+article > h2{
   font-family:var(--font-display);
   font-size:1.9rem;
   color:var(--blue);
   text-align:center;
-  margin-bottom:.5rem;
+  margin:1.25rem 0 .5rem;
 }
-#intro > p{
+article > p{
   margin:0 auto 1rem;
   max-width:65ch;
 }
 
-/* Intro image grid */
-#img-grid{
-  display:grid;
-  grid-template-columns: 1fr;      /* mobile stack */
-  gap:.75rem;
-}
-#img-grid img{
-  width:100%;
-  border-radius:.5rem;
-  box-shadow: var(--shadow);
-}
+/* The three hero images (no wrapper in HTML), so control by width */
+article > img{ width:100%; border-radius:.5rem; box-shadow:var(--shadow); margin-bottom:.75rem; }
 
-/* ---------- Plan Your Trip (cards) ---------- */
-#plan{
-  margin: var(--space-5) auto var(--space-3);
-}
-#plan h3{
+/* === Section 1: Plan Your Trip (this is the FIRST <section> inside article) === */
+article > section:nth-of-type(1){ margin: var(--space-5) auto var(--space-3); }
+article > section:nth-of-type(1) > h3{
   font-family:var(--font-display);
-  font-size:1.8rem;
-  color:var(--purple);
-  text-align:center;
-  margin-bottom: var(--space-3);
+  font-size:1.8rem; color:var(--purple); text-align:center; margin-bottom:var(--space-3);
 }
-#plan > div{
-  display:grid;
-  grid-template-columns: 1fr;      /* mobile stack */
-  gap: .75rem;
+/* cards inside plan */
+article > section:nth-of-type(1){
+  display:grid; grid-template-columns:1fr; gap:.75rem;
 }
-#plan section{
-  background:var(--light);
-  border-radius: var(--radius);
-  overflow:hidden;
-  box-shadow: var(--shadow);
+article > section:nth-of-type(1) > section{
+  background:var(--light); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+  display:grid; place-items:center; padding-bottom:1rem;
 }
-#plan h4{
-  margin:0;
-  padding: .85rem 1rem;
-  background: var(--dune, #363432); /* fallback */
-  background: var(--dark);
-  color: var(--white);
-  font-weight:700;
+article > section:nth-of-type(1) h4{
+  margin:0; padding:.85rem 1rem; background:var(--dark); color:var(--white); font-weight:700; width:100%; text-align:center;
 }
-#plan a{
-  display:block;
-  width:fit-content;
-  margin: .85rem 1rem 1rem;
-  padding:.6rem .9rem;
-  background:var(--flamingo, #EF6024);
-  background: var(--blue);
-  color:var(--white);
-  border-radius:.4rem;
-  font-weight:700;
-  text-decoration:none;
-}
-#plan a:hover{ background: var(--purple); }
 
-/* ---------- Testimonials ---------- */
-#testimonials{
-  margin: var(--space-5) auto var(--space-3);
-}
-#testimonials h3{
+/* === Section 2: Testimonials (SECOND <section> in article) === */
+article > section:nth-of-type(2){ margin: var(--space-5) auto var(--space-3); }
+article > section:nth-of-type(2) > h3{
   font-family:var(--font-display);
-  font-size:1.8rem;
-  color:var(--blue);
-  text-align:center;
-  margin-bottom: var(--space-3);
+  font-size:1.8rem; color:var(--blue); text-align:center; margin-bottom:var(--space-3);
 }
-#testimonials > div{
-  display:grid;
-  grid-template-columns: 1fr;       /* mobile stack */
-  gap:.75rem;
+article > section:nth-of-type(2){
+  display:grid; grid-template-columns:1fr; gap:.75rem;
 }
-#testimonials section{
-  background:var(--white);
-  border:1px solid var(--light);
-  border-radius: var(--radius);
-  padding: 1rem;
-  box-shadow: var(--shadow);
+article > section:nth-of-type(2) > section{
+  background:var(--white); border:1px solid var(--light); border-radius:var(--radius);
+  padding:1rem; box-shadow:var(--shadow); display:grid; gap:.5rem; align-content:start;
 }
+article > section:nth-of-type(2) img{
+  width:90px; height:auto; border-radius:50%; margin:0 auto .25rem; box-shadow:var(--shadow);
+}
+article > section:nth-of-type(2) h4{ text-align:center; font-weight:700; }
+article > section:nth-of-type(2) p{ text-align:center; font-weight:600; }
+article > section:nth-of-type(2) q{ display:block; text-align:center; font-style:italic; }
 
-/* ---------- About (icons + copy) ---------- */
-#about{
-  margin: var(--space-5) auto var(--space-3);
-}
-#about h3{
+/* === Section 3: About Your Destination (THIRD <section>) === */
+article > section:nth-of-type(3){ margin: var(--space-5) auto var(--space-3); }
+article > section:nth-of-type(3) > h3{
   font-family:var(--font-display);
-  font-size:1.8rem;
-  color:var(--purple);
-  text-align:center;
-  margin-bottom: var(--space-3);
+  font-size:1.8rem; color:var(--purple); text-align:center; margin-bottom:var(--space-3);
 }
-#about > div{
-  display:grid;
-  grid-template-columns: 1fr;      /* mobile stack */
-  gap: .75rem;
+article > section:nth-of-type(3){
+  display:grid; grid-template-columns:1fr; gap:.75rem;
 }
-#about section{
-  background:var(--white);
-  border:1px solid var(--light);
-  border-radius: var(--radius);
-  padding:1rem;
-  text-align:center;
-  box-shadow: var(--shadow);
+article > section:nth-of-type(3) > section{
+  background:var(--white); border:1px solid var(--light); border-radius:var(--radius);
+  padding:1rem; text-align:center; box-shadow:var(--shadow);
 }
-#about img{
-  width:80px; max-width:100%;
-  margin:0 auto .5rem;
-  filter: drop-shadow(.15rem .25rem .25rem rgba(0,0,0,.25));
-}
+article > section:nth-of-type(3) h4{ margin:0 0 .25rem; font-weight:700; }
+article > section:nth-of-type(3) p{ margin:0; font-weight:600; }
 
-/* ---------- Contact (form) ---------- */
-#contact{
-  margin: var(--space-5) auto var(--space-5);
-}
-#contact h3{
+/* === Section 4: Contact Us (FOURTH <section>) === */
+article > section:nth-of-type(4){ margin: var(--space-5) auto var(--space-5); }
+article > section:nth-of-type(4) > h3{
   font-family:var(--font-display);
-  font-size:1.8rem;
-  color:var(--blue);
-  text-align:center;
-  margin-bottom: var(--space-3);
+  font-size:1.8rem; color:var(--blue); text-align:center; margin-bottom:var(--space-3);
 }
-#contact form{
-  background:var(--light);
-  border-radius: var(--radius);
-  padding: 1rem;
-  box-shadow: var(--shadow);
+article > section:nth-of-type(4) form{
+  background:var(--light); border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow);
+  display:grid; gap:.75rem;
 }
+label{ font-weight:700; text-transform:uppercase; letter-spacing:.3px; font-size:.9rem; }
+label span{ color:var(--purple); margin-left:.25rem; }
+input[type="text"], input[type="email"], input[type="tel"], select{
+  width:100%; padding:.7rem .8rem; border:2px solid var(--dark); border-radius:.4rem; background:var(--white); font:inherit;
+}
+fieldset{ border:none; padding:0; margin:0; }
+legend{ font-weight:700; text-transform:uppercase; letter-spacing:.3px; margin-bottom:.5rem; }
+fieldset input[type="radio"]{ width:1.1rem; height:1.1rem; vertical-align:middle; margin-right:.35rem; }
+fieldset label{ text-transform:none; letter-spacing:0; font-size:1rem; font-weight:600; margin-right:1rem; display:inline-block; }
 
-/* Input groups */
-#names, #nums, #selects{
-  display:grid;
-  grid-template-columns: 1fr;   /* mobile stack */
-  gap:.75rem;
-  margin-bottom: 1rem;
-}
-
-label{
-  font-weight:700;
-  display:block;
-  margin-bottom:.25rem;
-}
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-select{
-  width:100%;
-  padding:.7rem .8rem;
-  border:2px solid var(--dark);
-  border-radius:.4rem;
-  background:var(--white);
-  font:inherit;
-}
-
-/* Radios */
-fieldset{
-  border:none;
-  padding:0;
-  margin:0 0 1rem;
-}
-legend{
-  font-weight:700;
-  margin-bottom:.5rem;
-}
-.radio-control{
-  display:flex;
-  align-items:center;
-  gap:.5rem;
-  margin:.25rem 0;
-}
-.radio-input{
-  width:1.15rem; height:1.15rem;
-}
-.radio-label{ font-weight:600; }
-
-
-.form-required{
-  font-size:.9rem;
-  color:var(--purple);
-}
-
-/* Custom select wrapper (visual only; native select retained) */
-.custom-select{
-  position:relative;
-}
-.custom-select::after{
-  content:"▾";
-  position:absolute;
-  right:.75rem;
-  top:50%;
-  transform:translateY(-50%);
-  pointer-events:none;
-  font-size:1rem;
-  color:var(--dark);
-}
-
-/* Submit */
 #mySubmit{
-  display:inline-block;
-  padding:.75rem 1.25rem;
-  background:var(--purple);
-  color:var(--white);
-  border:none;
-  border-radius:.5rem;
-  font-weight:700;
-  cursor:pointer;
+  display:inline-block; padding:.75rem 1.25rem; background:var(--purple); color:var(--white);
+  border:none; border-radius:.5rem; font-weight:700; cursor:pointer; justify-self:start;
 }
 #mySubmit:hover{ background:var(--blue); }
 
-/* ---------- Footer ---------- */
+/* === Footer === */
 footer{
   margin-top: var(--space-5);
   padding: 2rem 1rem 1.25rem;
@@ -387,200 +222,48 @@ footer{
   line-height:1.6;
   text-align:center;
 }
-footer p{ margin: .5rem 0 0; }
+footer p{ margin:.5rem 0 0; }
 footer a{ color:var(--black); }
+footer a:hover{ text-decoration:underline; }
 
-/* =========================================================
+/* =========================
    Breakpoints
-   ========================================================= */
+   ========================= */
 
-/* ≥ 500px: nav list to 3 cols */
+/* ≥ 500px: soften nav tiles, optional */
 @media (min-width:500px){
-  nav ul{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:.5rem;
-  }
-  header h1{ font-size:2.4rem; }
+  header h1{ font-size:2.3rem; }
 }
 
-/* ≥ 650px: promote grids (tablet) */
+/* ≥ 650px: tablet layouts */
 @media (min-width:650px){
-  /* Intro images → 2 cols */
-  #img-grid{ grid-template-columns: 1fr 1fr; }
+  /* hero images → 2-up */
+  article > img{ display:inline-block; width:calc(50% - .5rem); vertical-align:top; }
+  article > img:nth-of-type(3){ width:100%; } /* last image drops to next line on tablet for nicer flow */
 
-  /* Plan → 2 cols */
-  #plan > div{ grid-template-columns: 1fr 1fr; }
-
-  /* Testimonials → 2 cols */
-  #testimonials > div{ grid-template-columns: 1fr 1fr; }
-
-  /* About → 2 cols */
-  #about > div{ grid-template-columns: 1fr 1fr; }
-
-  /* Form groups in two columns where logical */
-  #names, #nums, #selects{
+  /* plan / testimonials / about → 2-up grids */
+  article > section:nth-of-type(1),
+  article > section:nth-of-type(2),
+  article > section:nth-of-type(3){
     grid-template-columns: 1fr 1fr;
   }
 }
 
-/* ≥ 750px: intro layout with wider type */
-@media (min-width:750px){
-  #intro h2{ font-size:2.1rem; }
-  #intro > p{ font-size:1.05rem; }
-}
-
-/* ≥ 980px: desktop grids */
+/* ≥ 980px: */
 @media (min-width:980px){
-  /* Header layout */
-  header{
-    text-align:left;
-  }
-  header > div,
-  header > section{
-    display:grid;
-    grid-template-columns: 1fr 3fr;
-    align-items:center;
-    gap:1rem;
-  }
-  #logo img{ margin:0; }
-  header p{ max-width:none; margin:.25rem 0 0; }
-
-  /* Intro images → 3 cols */
-  #img-grid{ grid-template-columns: 1fr 1fr 1fr; }
-
-  /* Plan → 4 cards across */
-  #plan > div{ grid-template-columns: repeat(4, 1fr); }
-
-  /* Testimonials → 3 columns for readability on wide screens */
-  #testimonials > div{ grid-template-columns: repeat(3, 1fr); }
-
-  /* About → 4 columns */
-  #about > div{ grid-template-columns: repeat(4, 1fr); }
-
-  /* Form layout: put names and nums side-by-side rows */
-  #names, #nums{ grid-template-columns: 1fr 1fr; }
-  #selects{ grid-template-columns: 1fr 1fr; }
-}
-
-/* ≥ 1250px: refine spacing & type */
-@media (min-width:1250px){
-  main{ width:min(1100px, 100% - 4rem); }
-  header h1{ font-size:2.6rem; }
-  #intro h2{ font-size:2.2rem; }
-  #plan h3, #testimonials h3, #about h3, #contact h3{ font-size:2rem; }
-  p{ font-size:1.1rem; }
-}
-
-@media (min-width: 650px){
-  nav { width: min(1100px, 100% - 2rem); }
-  /* */
-  #menu-toggle li a{
-    box-shadow: none;
-  }
-}
-
-@media (min-width: 980px){
-  /* Turn the header into a horizontal bar: logo/brand left, nav right */
-  header{
-    padding-block: 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--light);
-  }
-  
-  header > div,
-  header > section{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-    gap: 1rem;
-    width: min(1100px, 100% - 2rem);
-    margin-inline: auto;
-  }
-
-  /* Hide the mobile "Menu" button and always show links inline */
-  #menu-toggle label{ display: none; }
-  #menu-toggle ul{
-    display: flex !important;
-    gap: 1.25rem;
-    justify-content: flex-end;
-    margin: 0;
-  }
-  #menu-toggle li a{
-    background: transparent;
-    padding: .25rem 0;
-    color: var(--dark);
-    border-radius: 0;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  #menu-toggle li a:hover{
-    color: var(--blue);
-    text-decoration: underline;
-  }
-  #menu-toggle li.active a{
-    color: var(--purple);
-  }
-
-  /* Hero headline + paragraph scale a touch on desktop like the mock */
-  header h1{ font-size: 2.6rem; margin-top: 0; color: var(--blue); }
-  header p{ margin: .25rem 0 0; max-width: 60ch; }
-}
-
-/* Section headings  */
-#plan h3, #testimonials h3, #about h3, #contact h3{
-  letter-spacing: .2px;
-  margin-top: 2rem;
-}
-
-/* Plan cards: ensure titles read as dark bars and CTAs pop */
-#plan h4{
-  background: var(--dark);
-  color: var(--white);
-}
-#plan a{
-  background: var(--blue);
-  color: var(--white);
-  font-weight: 700;
-}
-#plan a:hover{ background: var(--purple); }
-
-/* Testimonials: tighten spacing for card feel */
-#testimonials section{
-  display: grid;
-  gap: .5rem;
-  align-content: start;
-}
-
-/* About: make the facts tiles clean and centered */
-#about section{
-  display: grid;
-  place-items: center;
-  gap: .5rem;
-}
-
-/* Contact form*/
-label{ text-transform: uppercase; font-size: .9rem; letter-spacing: .3px; }
-legend{ text-transform: uppercase; letter-spacing: .3px; }
-.form-required{ display: block; margin-top: .25rem; }
-
-/* Footer  */
-footer{
-  background: var(--teal);
-  color: var(--black);
-}
-footer a:hover{ text-decoration: underline; }
-
-/* Desktop nav inline */
-@media (min-width:980px){
+  /* header bar: logo left, nav right (inline links) */
   header{ padding-block:1rem; text-align:left; border-bottom:1px solid var(--light); }
-  header > div, header > section{
-    display:grid; grid-template-columns:1fr 3fr; align-items:center; gap:1rem;
-    width:min(1100px, 100% - 2rem); margin-inline:auto;
+  header > *{ margin-left:0; margin-right:0; }  /* keep tight */
+  header nav ul{
+    display:flex; gap:1.25rem; justify-content:flex-end; margin:1rem auto 0;
+    width:min(1100px, 100% - 2rem);
   }
-  #menu-toggle label{ display:none; }
-  #menu-toggle ul{ display:flex !important; gap:1.25rem; justify-content:flex-end; margin:0; }
-  #menu-toggle li a{ background:transparent; padding:.25rem 0; color:var(--dark); border-radius:0; font-weight:600; text-decoration:none; }
-  #menu-toggle li a:hover{ color:var(--blue); text-decoration:underline; }
-  #menu-toggle li.active a{ color:var(--purple); }
-}
+  header nav a{
+    background:transparent; padding:.25rem 0; color:var(--dark); border-radius:0; box-shadow:none; font-weight:600;
+  }
+  header nav a:hover{ color:var(--blue); text-decoration:underline; }
+
+  /* reflow header content as a two-column zone */
+  header{
+    display:grid; grid-template-columns:auto 1fr; align-items:center; row-gap:.5rem;
+ 
